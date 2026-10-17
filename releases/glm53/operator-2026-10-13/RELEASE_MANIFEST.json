@@ -1,0 +1,18 @@
+{
+  "version": "operator-2026-10-13-public",
+  "status": "historical_operator_profile_public_copy_not_gpu_revalidated",
+  "model": "zai-org/GLM-5.3-Flash",
+  "checkpoint_revision": "91b69215804f2d2036a8867f6ce44848e278dcda",
+  "historical_validation_scope": "Original operator configuration; path/project/name substitutions in this public copy have not been rerun on GPUs.",
+  "files": {
+    "01_preflight.sbatch": "c5ee2bd2323878fbde58d7e236fef4825eaf0a6851ecba70e9c2bbc3d61e534a",
+    "02_prepare_backport.sbatch": "45a08dac2633488daf7bf91447346ef386ff56337bd3510c4c4ff16162aefeda",
+    "03_prepare_model.sbatch": "2b44aed46a01d5e93e4167bab3794a675bb5df16cbbc7161f86e7551580dbb1a",
+    "04_run_model.sbatch": "559ff72e0362f05de74538d577b6b49420a9c77ae31e425ccb91f5c1414c2649",
+    "05_repair_tilelang.sbatch": "6c5a9f6d27a30b2faaee90a250313211b999ff1c58c93c83e1a39568117194ea",
+    "metadata/manifest.json": "83febe68875827cac8b60680c3bd829cedf0bd074d3bab8c3195f19c6499abfd",
+    "preflight.py": "b1e8802f726345ff48408f0587f5c11b289174aa9d66c044f18ab02fb9c32f7c",
+    "run_model.sh": "872b4a971884fc5a460f4d77490a73f76acce8422a320124e6a1bfe8e678ee47",
+    "test_endpoint.py": "a9ef2905ecf09608d0811d06b07d52607075dc124135be3d44c4873b348f741e"
+  }
+}

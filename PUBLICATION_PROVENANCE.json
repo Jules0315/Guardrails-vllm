@@ -1,0 +1,222 @@
+{
+  "packaged_on": "2026-10-17",
+  "transformations": [
+    "Personal team directory replaced with team_vllm",
+    "Slurm account replaced with YOUR_PROJECT",
+    "Job-name prefix generalized to leonardo",
+    "Original source retained separately; public path adaptations not GPU revalidated",
+    "Stock image paths aligned to the public installation layout"
+  ],
+  "source_file_hashes": [
+    {
+      "path": "qwen/00_prepare.sbatch",
+      "original_sha256": "b808c09923898b5dd9666de2aed774518cf6925be4323d5c2bfb937e9b9d7795",
+      "packaged_sha256": "e78c2a7a0cb18febb88ed3092196776a3d50aeb02cf0f0e78f36c6d13889c8d7"
+    },
+    {
+      "path": "qwen/01_probe.sbatch",
+      "original_sha256": "4596adec231053dc4dd16814bf04ed3db7e8c40f83f996555ab25f0590da518c",
+      "packaged_sha256": "4b36147c0ac4543aefb85e4143e7422d58fe65a25a22a7b05ab3afc4288f5a55"
+    },
+    {
+      "path": "qwen/02_vllm_single.sbatch",
+      "original_sha256": "10d6461795bd3394b19dbde826d29f86c2b4ac79becbda0f3b2d3848c3ba9d90",
+      "packaged_sha256": "2dd4f36fe94c0a61e3d3907b0afacb7f724e1ab799f7c463b562670fc43de349"
+    },
+    {
+      "path": "qwen/03_nccl_check.sbatch",
+      "original_sha256": "670dd4ce2a00a514cb4a8b5d19b6ca490aa36fed2e76ffa83488695b1aa3d777",
+      "packaged_sha256": "09cbea36a27ecf83f8511656df0d393808324c25c35689af3d01b9c5b2cde304"
+    },
+    {
+      "path": "qwen/04_vllm_multinode.sbatch",
+      "original_sha256": "db63d7bf885f56a41963f3a9867f9b07709a848d734cd47f47dc29091dce8300",
+      "packaged_sha256": "e4c49e13bacbf4fba054d1e761d82c5dcb8140dd8c1240a337f951bef994dbd9"
+    },
+    {
+      "path": "qwen/05_prepare_qwen235b.sbatch",
+      "original_sha256": "a343c3a259440c98249b61469f31adacac259301dd0204738d41cda1305daa1b",
+      "packaged_sha256": "b515756af7f82dd6ab482fce68c6bc2e21d3f35aa7e533ac8ddad9cccce0aa72"
+    },
+    {
+      "path": "qwen/06_run_qwen235b.sh",
+      "original_sha256": "c48541de62632e9aec26cb8a9c393b98d7b7e9052ae11590d0f93afead17c0ab",
+      "packaged_sha256": "f1ef5251c59dceaee3c0a692bf83de219aff697088093fcd50938b546a3eaaed"
+    },
+    {
+      "path": "qwen/Dockerfile.ib",
+      "original_sha256": "91afd9c48f490131c35d36c8d7fa8bd998e43a9137cd532ce24faa9bbf47601a",
+      "packaged_sha256": "91afd9c48f490131c35d36c8d7fa8bd998e43a9137cd532ce24faa9bbf47601a"
+    },
+    {
+      "path": "qwen/README.md",
+      "original_sha256": "21b70067195031f718994a3160d294d607e02b72cc0444eac3bbda0c69eea875",
+      "packaged_sha256": "d2cea2c1f9500cefc1523ac5643408e0081468978f4fa793f0919346d9f2ebda"
+    },
+    {
+      "path": "qwen/common.sh",
+      "original_sha256": "185e2bc7399adc892751a9599634ffb0de2f8cc7f522019777d9cf778deb87cc",
+      "packaged_sha256": "185e2bc7399adc892751a9599634ffb0de2f8cc7f522019777d9cf778deb87cc"
+    },
+    {
+      "path": "qwen/nccl_check.py",
+      "original_sha256": "ce6d4f65b1349ec01c39ea299d1ed8ef0f362c6ced046245e6dd65ca52384be0",
+      "packaged_sha256": "ce6d4f65b1349ec01c39ea299d1ed8ef0f362c6ced046245e6dd65ca52384be0"
+    },
+    {
+      "path": "qwen/nccl_task.sh",
+      "original_sha256": "4e9b9f459ebf8f265b20fc2023af78e0108d8b4ed54eaf7933665a546354e58b",
+      "packaged_sha256": "4e9b9f459ebf8f265b20fc2023af78e0108d8b4ed54eaf7933665a546354e58b"
+    },
+    {
+      "path": "qwen/run_vllm.sh",
+      "original_sha256": "33a243621e15fe1833e2ab21f7be8c266be1b1263a9e828e3a7241600437e967",
+      "packaged_sha256": "33a243621e15fe1833e2ab21f7be8c266be1b1263a9e828e3a7241600437e967"
+    },
+    {
+      "path": "qwen/smoke_test.sh",
+      "original_sha256": "a9d6b4376f2bed97af527218aa4360d03f1df0ced21be04820560a0488c1bdb7",
+      "packaged_sha256": "a9d6b4376f2bed97af527218aa4360d03f1df0ced21be04820560a0488c1bdb7"
+    },
+    {
+      "path": "qwen/tunnel.sh",
+      "original_sha256": "2716a2e3c39e7b10f18df9735e5515df94c519e85cdac7b89db0e55a65f97ade",
+      "packaged_sha256": "35d2fc7dc8e0869d815e94e848a5f20a43f48084be42318bbb78a49be2a3fcdd"
+    },
+    {
+      "path": "qwen/tests/test_regressions.py",
+      "original_sha256": "939600acb03d8c0d18f02b1fd77347e655c3673675e5ba6c458c8fae1ee92588",
+      "packaged_sha256": "939600acb03d8c0d18f02b1fd77347e655c3673675e5ba6c458c8fae1ee92588"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/01_preflight.sbatch",
+      "original_sha256": "9a3214ca6846e0423bb5e9b0a6aa9f69d6d49c9b1e414379e3fd8690db3690af",
+      "packaged_sha256": "c5ee2bd2323878fbde58d7e236fef4825eaf0a6851ecba70e9c2bbc3d61e534a"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/02_prepare_backport.sbatch",
+      "original_sha256": "2164bbd4e8b3f5b8383a53b184d699461180acd0d7661800d91f7221ed2df2fd",
+      "packaged_sha256": "45a08dac2633488daf7bf91447346ef386ff56337bd3510c4c4ff16162aefeda"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/03_prepare_model.sbatch",
+      "original_sha256": "7c4f6611deb044b2923d16b19adf40908204fc47040d04acfc603feb7b85ab93",
+      "packaged_sha256": "2b44aed46a01d5e93e4167bab3794a675bb5df16cbbc7161f86e7551580dbb1a"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/04_run_model.sbatch",
+      "original_sha256": "42d618dfb8614c04196fbe82f4106adee3e887f49b0c10d0e99e0c8e632c3788",
+      "packaged_sha256": "559ff72e0362f05de74538d577b6b49420a9c77ae31e425ccb91f5c1414c2649"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/05_repair_tilelang.sbatch",
+      "original_sha256": "67b1d7ecb720f08d0f6cdd0dead1fffd2183705e0c78afe2523f25a8762625c3",
+      "packaged_sha256": "6c5a9f6d27a30b2faaee90a250313211b999ff1c58c93c83e1a39568117194ea"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/preflight.py",
+      "original_sha256": "b1e8802f726345ff48408f0587f5c11b289174aa9d66c044f18ab02fb9c32f7c",
+      "packaged_sha256": "b1e8802f726345ff48408f0587f5c11b289174aa9d66c044f18ab02fb9c32f7c"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/run_model.sh",
+      "original_sha256": "4571f568d3bb8e6f4a20d4c8d334dae329d777f121b8cc1e42d364b5afa7c0cf",
+      "packaged_sha256": "872b4a971884fc5a460f4d77490a73f76acce8422a320124e6a1bfe8e678ee47"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/test_endpoint.py",
+      "original_sha256": "a9ef2905ecf09608d0811d06b07d52607075dc124135be3d44c4873b348f741e",
+      "packaged_sha256": "a9ef2905ecf09608d0811d06b07d52607075dc124135be3d44c4873b348f741e"
+    },
+    {
+      "path": "releases/glm53/operator-2026-10-13/metadata/manifest.json",
+      "original_sha256": "83febe68875827cac8b60680c3bd829cedf0bd074d3bab8c3195f19c6499abfd",
+      "packaged_sha256": "83febe68875827cac8b60680c3bd829cedf0bd074d3bab8c3195f19c6499abfd"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/01_preflight.sbatch",
+      "original_sha256": "9a3214ca6846e0423bb5e9b0a6aa9f69d6d49c9b1e414379e3fd8690db3690af",
+      "packaged_sha256": "c5ee2bd2323878fbde58d7e236fef4825eaf0a6851ecba70e9c2bbc3d61e534a"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/02_prepare_backport.sbatch",
+      "original_sha256": "2164bbd4e8b3f5b8383a53b184d699461180acd0d7661800d91f7221ed2df2fd",
+      "packaged_sha256": "45a08dac2633488daf7bf91447346ef386ff56337bd3510c4c4ff16162aefeda"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/03_prepare_model.sbatch",
+      "original_sha256": "7c4f6611deb044b2923d16b19adf40908204fc47040d04acfc603feb7b85ab93",
+      "packaged_sha256": "2b44aed46a01d5e93e4167bab3794a675bb5df16cbbc7161f86e7551580dbb1a"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/04_run_model.sbatch",
+      "original_sha256": "42d618dfb8614c04196fbe82f4106adee3e887f49b0c10d0e99e0c8e632c3788",
+      "packaged_sha256": "559ff72e0362f05de74538d577b6b49420a9c77ae31e425ccb91f5c1414c2649"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/05_repair_tilelang.sbatch",
+      "original_sha256": "67b1d7ecb720f08d0f6cdd0dead1fffd2183705e0c78afe2523f25a8762625c3",
+      "packaged_sha256": "6c5a9f6d27a30b2faaee90a250313211b999ff1c58c93c83e1a39568117194ea"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/06_seed_user_cache.sbatch",
+      "original_sha256": "a772e3b1f0a39a140cf695a836bc41415ef58206197181632fabedbea00366eb",
+      "packaged_sha256": "1f3cfa0dc325eb267305b8584a91796f0b2bbc64f564e0f28a28432ac0aae196"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/preflight.py",
+      "original_sha256": "b1e8802f726345ff48408f0587f5c11b289174aa9d66c044f18ab02fb9c32f7c",
+      "packaged_sha256": "b1e8802f726345ff48408f0587f5c11b289174aa9d66c044f18ab02fb9c32f7c"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/run_model.sh",
+      "original_sha256": "57e8b5470132a128a16b58942658571d78c2851ec89b3fce33ef83724a0d97f1",
+      "packaged_sha256": "58860e6cb70b7e21a1499a44a4d910b79fdaa9845a5e8b839ae82fe7cc2a3232"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/test_endpoint.py",
+      "original_sha256": "a9ef2905ecf09608d0811d06b07d52607075dc124135be3d44c4873b348f741e",
+      "packaged_sha256": "a9ef2905ecf09608d0811d06b07d52607075dc124135be3d44c4873b348f741e"
+    },
+    {
+      "path": "candidates/glm53/per-user-2026-10-13/metadata/manifest.json",
+      "original_sha256": "83febe68875827cac8b60680c3bd829cedf0bd074d3bab8c3195f19c6499abfd",
+      "packaged_sha256": "83febe68875827cac8b60680c3bd829cedf0bd074d3bab8c3195f19c6499abfd"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/README.md",
+      "original_sha256": "593f10ddc1e4aabc2b37353681cd0f5b6a8bccbc1b189adabee06a8133bd7f6a",
+      "packaged_sha256": "0dc7406840eeeb76b422f4b1b23570997de70e5080e940da6e50681d14f860c6"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/check_cache_access.py",
+      "original_sha256": "cdb1ad346374b0103cb38166b46bca387c0c96965607a05aa9995290b15788c8",
+      "packaged_sha256": "3f0e47a8b55af31ea64574971d3b4a91559eb4970ca03846dca08fbaa65a77d0"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/create_api_key.py",
+      "original_sha256": "907c24eceb17f8e994c94899f2ed59e0b8c311e0e419d787fa02c09423e0f701",
+      "packaged_sha256": "907c24eceb17f8e994c94899f2ed59e0b8c311e0e419d787fa02c09423e0f701"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/open_tunnel.py",
+      "original_sha256": "564b147e17f285e257590ea9e48e56a32af85c206b648c4ccff94f4373898a49",
+      "packaged_sha256": "564b147e17f285e257590ea9e48e56a32af85c206b648c4ccff94f4373898a49"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/prepare_run.sh",
+      "original_sha256": "69fe78933f08eb0a8cc21bd12ef4e2668cfb8d6d2a723bfcd6d4e9d3da4a4635",
+      "packaged_sha256": "31006ac8327edc108267ee0f0ec01ecb422108d49d13632bdd825c3ca7aecace"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/submit_server.sh",
+      "original_sha256": "23329bcb06068aed2bb61933fcf204ec850ea4be8d8e25afbfc64d188ee25d35",
+      "packaged_sha256": "23329bcb06068aed2bb61933fcf204ec850ea4be8d8e25afbfc64d188ee25d35"
+    },
+    {
+      "path": "releases/glm53-tools/2026-10-14-r2/test_api.sh",
+      "original_sha256": "a16b928d917bde996b34c5700e7755777af4269b4e32d05b8af66638635ddfd4",
+      "packaged_sha256": "a16b928d917bde996b34c5700e7755777af4269b4e32d05b8af66638635ddfd4"
+    }
+  ]
+}

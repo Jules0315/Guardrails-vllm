@@ -1,0 +1,13 @@
+{
+  "version": "2026-10-14-r2-public",
+  "status": "helpers_only_no_new_inference_validation",
+  "files": {
+    "README.md": "0dc7406840eeeb76b422f4b1b23570997de70e5080e940da6e50681d14f860c6",
+    "check_cache_access.py": "3f0e47a8b55af31ea64574971d3b4a91559eb4970ca03846dca08fbaa65a77d0",
+    "create_api_key.py": "907c24eceb17f8e994c94899f2ed59e0b8c311e0e419d787fa02c09423e0f701",
+    "open_tunnel.py": "564b147e17f285e257590ea9e48e56a32af85c206b648c4ccff94f4373898a49",
+    "prepare_run.sh": "31006ac8327edc108267ee0f0ec01ecb422108d49d13632bdd825c3ca7aecace",
+    "submit_server.sh": "23329bcb06068aed2bb61933fcf204ec850ea4be8d8e25afbfc64d188ee25d35",
+    "test_api.sh": "a16b928d917bde996b34c5700e7755777af4269b4e32d05b8af66638635ddfd4"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "model": "zai-org/GLM-5.3-Flash",
+  "revision": "91b69215804f2d2036a8867f6ce44848e278dcda",
+  "weight_shards": 62,
+  "weight_bytes": 328337455672,
+  "config_sha256": "bb8f01c42cb92a52ca72e65afb4d5bd8d11aef083cd210e8de25dfb904f23e9f",
+  "gated": false,
+  "license": "mit",
+  "config_source": "https://huggingface.co/zai-org/GLM-5.3-Flash/resolve/91b69215804f2d2036a8867f6ce44848e278dcda/config.json"
+}
