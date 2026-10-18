@@ -30,6 +30,22 @@ def main():
             for name, digest in json.loads(p.read_text())['files'].items():
                 file = p.parent / name
                 assert hashlib.sha256(file.read_bytes()).hexdigest() == digest, 'Hash mismatch: ' + str(file)
+        if p.name == 'GPU_VALIDATION.json':
+            evidence = json.loads(p.read_text())
+            tested = root / 'releases' / evidence['tested_release']
+            assert hashlib.sha256((tested / 'RELEASE_MANIFEST.json').read_bytes()).hexdigest() == evidence['tested_manifest_sha256']
+            for name, digest in evidence['execution_files_sha256'].items():
+                for release in (tested, p.parent):
+                    assert hashlib.sha256((release / name).read_bytes()).hexdigest() == digest, 'GPU-tested code changed: ' + str(release / name)
+            for model, run in evidence['runs'].items():
+                assert run['nodes'] == 2 and run['gpus'] == 8 and run['checks_per_suite'] == 7
+                assert run['startup_passed'] and run['ssh_client_suites_passed'] == 2 and run['endpoint_removed']
+                before = json.loads((tested / 'profiles' / (model + '.json')).read_text())
+                after = json.loads((p.parent / 'profiles' / (model + '.json')).read_text())
+                assert {k: v for k, v in before.items() if k != 'validation'} == {k: v for k, v in after.items() if k != 'validation'}, 'GPU-tested engine settings changed'
+                for suite in ('api-startup.json', 'api-client-1.json', 'api-client-2.json'):
+                    checks = json.loads((root / evidence['evidence_directory'] / model / suite).read_text())
+                    assert len(checks) == 7 and all(check['passed'] for check in checks.values()), 'GPU API evidence incomplete: ' + model + '/' + suite
         if p.suffix == '.md':
             for target in re.findall(r'\[[^\]]+\]\(([^\s)]+)\)', p.read_text()):
                 if '://' in target or target.startswith('#'):

@@ -2,6 +2,8 @@
 
 # Quick guide: start a GLM server and connect to its API
 
+For the new model-independent workflow, see the [common GLM/DeepSeek server and client guide](../releases/inference/2026-10-18-docs1/QUICK_GUIDE.md). It uses `scripts/inference` and versioned runtime assets. Both models passed fresh two-node GPU and English API validation with one operator account; see [results](common-gpu-validation.md). The legacy procedure below remains available.
+
 **Public adaptation:** 17 October 2026 · Original team procedure: 14 October 2026 (Europe/Berlin)
 
 Two roles: the **server operator** submits the GPU job using their own Leonardo account; **API clients** connect using their own Leonardo accounts and the operator's session API key.

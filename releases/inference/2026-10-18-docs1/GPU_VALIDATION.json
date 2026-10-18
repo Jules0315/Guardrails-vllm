@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "tested_release": "inference/2026-10-18",
+  "promoted_release": "inference/2026-10-18-docs1",
+  "tested_manifest_sha256": "253e2034aa2ca69e7c1a6a97c89516a5da6c7df1bda53f5ba9811cd8308db9ff",
+  "runtime_id": "vllm-backport-sm80-0.13.1",
+  "sif_sha256": "775d1d1acecb610301473c9b8ab74deb08bbec1766691fdf9e7c4fcea4957fa1",
+  "execution_files_sha256": {
+    "serve_model.sbatch": "9fa67e597e202e2152c098ddf4b2794d2fb341a0f7797d82d2abf04337601314",
+    "client.py": "ad6770d5d47a8530a4a2901cfb7bcd4250af3ab43cd6dac0ff5817a7011cefbe",
+    "lifecycle.py": "3222e290aaf259db1413e615f1090471c3f47caa786c25ff0576a8518eb4a9ad",
+    "submit_server.sh": "91f1f82e423e1aad97a1827a76a0874e2912130bb4d43d22dad7ed1162d006b9",
+    "prepare_run.sh": "033bc136770dd19e1508894ab18b9c22c10a48a20071cb2a8588c839324b4ad5",
+    "inference.py": "07304c8b7692cf40915161473a349ef9d5f4c6bdb2d7530c9f95849948016ffa",
+    "test_endpoint.py": "d1dc4ce617054963e3f1d472bbd3988ecad980e48853f1c2933e3d44cc1c1941",
+    "node.py": "27af37c2200621ebb83b6ac87a72d48048a8408debaea3a7f7123a73f6210e16",
+    "hooks/warm_engram.py": "835074a2e39444c6970923bc882de291e4818af0947e05451bd6abcdfbdf9e89",
+    "hooks/nccl_ep.py": "e2a51d455d1e4e040854b5b97fc7c448fcbebbf89f6c66cff5cd859f976f1630"
+  },
+  "promotion_changes": "Documentation, validation metadata and QUICK_GUIDE.md naming only; engine settings and execution code unchanged.",
+  "evidence_redaction": "Absolute checkpoint roots from model catalog responses are replaced with <CHECKPOINT_DIRECTORY>; keys, private run paths and raw logs are excluded.",
+  "evidence_directory": "validation/common-2026-10-18",
+  "scope": "One operator account; sequential two-node/eight-A100 runs; real English model API checks, plus two SSH-forwarded repeat suites per model. No claim of other-account or sustained-load validation.",
+  "runs": {
+    "glm53": {
+      "job_id": "61299807",
+      "nodes": 2,
+      "gpus": 8,
+      "parallelism": {
+        "tensor": 4,
+        "pipeline": 2
+      },
+      "health_after_seconds": 800.78,
+      "checks_per_suite": 7,
+      "startup_passed": true,
+      "ssh_client_suites_passed": 2,
+      "ready_at": "2026-10-18T22:26:37.854450+02:00",
+      "stopped_at_utc": "2026-10-18T20:29:05.569239+00:00",
+      "endpoint_removed": true,
+      "termination": "Cancelled by the operator after all API suites passed; not a natural successful batch exit.",
+      "accounting_header": "JobID|JobName|State|ExitCode|Start|End|Elapsed|AllocTRES|NodeList|MaxRSS",
+      "accounting_record": "61299807|glm53-common|CANCELLED (operator stop)|0:0|2026-10-18T22:13:05|2026-10-18T22:28:20|00:15:15|billing=64,cpu=64,gres/gpu=8,mem=960G,node=2|node-[2013,2018]|"
+    },
+    "deepseek41": {
+      "job_id": "61300901",
+      "nodes": 2,
+      "gpus": 8,
+      "parallelism": {
+        "tensor": 8,
+        "pipeline": 1
+      },
+      "health_after_seconds": 1546.53,
+      "checks_per_suite": 7,
+      "startup_passed": true,
+      "ssh_client_suites_passed": 2,
+      "ready_at": "2026-10-18T22:55:45.851546+02:00",
+      "stopped_at_utc": "2026-10-18T20:58:26.939871+00:00",
+      "endpoint_removed": true,
+      "termination": "Cancelled by the operator after all API suites passed; not a natural successful batch exit.",
+      "accounting_header": "JobID|JobName|State|ExitCode|Start|End|Elapsed|AllocTRES|NodeList|MaxRSS",
+      "accounting_record": "61300901|deepseek41-common|CANCELLED (operator stop)|0:0|2026-10-18T22:29:27|2026-10-18T22:57:30|00:28:03|billing=64,cpu=64,gres/gpu=8,mem=960G,node=2|node-[1553-1554]|"
+    }
+  }
+}

@@ -48,3 +48,7 @@ The image did not identify a source commit; a source-to-binary match was not ind
 - A controlled performance comparison with other hosted inference services.
 
 The historical GPU jobs and their endpoints have ended. This repository contains no active endpoint or session API key.
+
+## Common framework follow-up
+
+The shared GLM/DeepSeek execution code has since passed real two-node GPU and English API tests. See the [common framework validation record](common-gpu-validation.md). This later evidence does not expand the historical Qwen/GLM adaptation scope above.

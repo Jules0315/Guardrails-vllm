@@ -1,0 +1,21 @@
+{
+  "release": "inference/2026-10-18-docs1",
+  "files": {
+    "GPU_VALIDATION.json": "448cd1619886d5316ee1de0279221f9db2a8900af70f0d001fe4eb5b7e19b292",
+    "QUICK_GUIDE.md": "9dfcc756d009da537b4ded9f56bd14f8791a4ac2170cecc885a760800ac8e15e",
+    "README.md": "76a9031ecfed748ee70269d6e0e6762dd3a9c05c38d2af4a10c43e358521c941",
+    "client.py": "ad6770d5d47a8530a4a2901cfb7bcd4250af3ab43cd6dac0ff5817a7011cefbe",
+    "hooks/nccl_ep.py": "e2a51d455d1e4e040854b5b97fc7c448fcbebbf89f6c66cff5cd859f976f1630",
+    "hooks/warm_engram.py": "835074a2e39444c6970923bc882de291e4818af0947e05451bd6abcdfbdf9e89",
+    "inference.py": "07304c8b7692cf40915161473a349ef9d5f4c6bdb2d7530c9f95849948016ffa",
+    "lifecycle.py": "3222e290aaf259db1413e615f1090471c3f47caa786c25ff0576a8518eb4a9ad",
+    "node.py": "27af37c2200621ebb83b6ac87a72d48048a8408debaea3a7f7123a73f6210e16",
+    "prepare_run.sh": "033bc136770dd19e1508894ab18b9c22c10a48a20071cb2a8588c839324b4ad5",
+    "profiles/deepseek41.json": "bbc8654b76b2a013eb5c4c4790c993b7c122771676a29012be8531a3f8746664",
+    "profiles/glm53.json": "4c0fcc839cd10c0941cce20f254cf8eaf1c8867b0ee40065c1222315dc512381",
+    "serve_model.sbatch": "9fa67e597e202e2152c098ddf4b2794d2fb341a0f7797d82d2abf04337601314",
+    "site.example.json": "0f8d24e02a5dcefa8ce07e24fb3abf26d5781f79b7f15a30f4efc1c97d4fbd77",
+    "submit_server.sh": "91f1f82e423e1aad97a1827a76a0874e2912130bb4d43d22dad7ed1162d006b9",
+    "test_endpoint.py": "d1dc4ce617054963e3f1d472bbd3988ecad980e48853f1c2933e3d44cc1c1941"
+  }
+}
