@@ -1,6 +1,6 @@
 # Common code, model profiles and runtime registration
 
-The source of the new framework is `releases/inference/2026-10-18`; `scripts/inference` now selects the documentation/validation snapshot `releases/inference/2026-10-18-docs1`. Historical GLM/Qwen scripts remain intact. The new framework also includes a DeepSeek profile derived from the original r2 installation.
+The current framework is `releases/inference/2026-10-19-docs1`, selected by `scripts/inference` and based on Qwen-tested source `2026-10-19-r2`. It provides GLM, DeepSeek and Qwen profiles with shared launch/client code. Earlier snapshots preserve the original GLM/DeepSeek GPU evidence and historical installation scripts.
 
 ```mermaid
 flowchart LR
@@ -26,7 +26,7 @@ flowchart LR
 | `site.example.json` | Portable template for site-owned paths and scheduling settings |
 | `runtime.json` | External SIF digest, overlay file hashes and runtime ID; generated at installation |
 
-Model profiles reference runtime IDs; model directories do not own a container. Both current profiles use `vllm-backport-sm80-0.13.1`. An additional model can choose a different runtime without changing the shared launcher. Container assets and model weights are not committed to Git.
+Model profiles reference runtime IDs; model directories do not own a container. All three current profiles use `vllm-backport-sm80-0.13.1`. An additional model can choose a different runtime without changing the shared launcher. Container assets and model weights are not committed to Git.
 
 ## Register an existing runtime
 
@@ -62,4 +62,8 @@ python3 -m unittest discover -s tests -v
 python3 -m unittest discover -s qwen/tests -v
 ```
 
-See the [shared quick guide](../releases/inference/2026-10-18-docs1/QUICK_GUIDE.md) for server and client commands.
+See the [shared quick guide](../releases/inference/2026-10-19-docs1/QUICK_GUIDE.md) for server and client commands.
+
+## Qwen and port-allocation follow-up
+
+`qwen235b` now selects Qwen3-235B-A22B-FP8 with TP4/PP2 and the same shared runtime. The API port range is 31000–40999, separated from master/probe ports 29000–30000. The batch formulas are checked across all 10,000 job suffixes. See the [actual Qwen GPU results](qwen-common-validation.md) and current quick guide. GLM/DeepSeek engine settings and Python execution code are unchanged; their actual GPU evidence remains from 18 October, before the shared port-only correction.

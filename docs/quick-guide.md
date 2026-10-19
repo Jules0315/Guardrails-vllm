@@ -2,7 +2,7 @@
 
 # Quick guide: start a GLM server and connect to its API
 
-For the new model-independent workflow, see the [common GLM/DeepSeek server and client guide](../releases/inference/2026-10-18-docs1/QUICK_GUIDE.md). It uses `scripts/inference` and versioned runtime assets. Both models passed fresh two-node GPU and English API validation with one operator account; see [results](common-gpu-validation.md). The legacy procedure below remains available.
+For the new model-independent workflow, see the [common GLM/DeepSeek server and client guide](../releases/inference/2026-10-19-docs1/QUICK_GUIDE.md). It uses `scripts/inference` and versioned runtime assets. Both models passed fresh two-node GPU and English API validation with one operator account; see [results](common-gpu-validation.md). The legacy procedure below remains available.
 
 **Public adaptation:** 17 October 2026 · Original team procedure: 14 October 2026 (Europe/Berlin)
 

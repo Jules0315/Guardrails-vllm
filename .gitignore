@@ -35,6 +35,8 @@ api_key.txt
 auth_header
 endpoint.json
 RUN_SETUP.json
+RUN_CONFIG.json
+inference-site.json
 team_test_results-*.json
 inference-*.json
 preflight-*.json

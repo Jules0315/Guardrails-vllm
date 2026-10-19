@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import signal
@@ -15,13 +16,31 @@ import time
 import unittest
 
 REPO = Path(__file__).resolve().parents[1]
-RELEASE = (REPO / 'scripts/inference').resolve()
+RELEASE = Path(os.environ.get('VLLM_TEST_RELEASE', str(REPO / 'scripts/inference'))).resolve()
+MODELS = tuple(sorted(p.stem for p in (RELEASE / 'profiles').glob('*.json')))
 sys.path.insert(0, str(RELEASE))
 import inference
 import node
 
 
+def allocated_ports():
+    source = (RELEASE / 'serve_model.sbatch').read_text()
+    assignments = '\n'.join(re.findall(r'^export INFERENCE_(?:MASTER|API)_PORT=.*$', source, re.M))
+    assert len(assignments.splitlines()) == 2
+    script = 'for SLURM_JOB_ID in {0..9999}; do\n' + assignments + '\nprintf "%s %s\\n" "$INFERENCE_MASTER_PORT" "$INFERENCE_API_PORT"\ndone'
+    return [tuple(map(int, line.split())) for line in subprocess.check_output(['bash', '-c', script]).decode().splitlines()]
+
+
 class Framework(unittest.TestCase):
+    def test_port_ranges_do_not_overlap_for_any_job_suffix(self):
+        ports = allocated_ports()
+        masters = {master for master, _ in ports}
+        probes = {master + 1 for master in masters}
+        apis = {api for _, api in ports}
+        self.assertTrue(apis.isdisjoint(masters | probes))
+        self.assertEqual(len(apis), 10000)
+        self.assertTrue(all(1 <= p <= 65535 for p in masters | probes | apis))
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
@@ -45,12 +64,13 @@ class Framework(unittest.TestCase):
         (runtime / 'python-overlay/tilelang/__init__.py').write_text('# test fixture\n')
         (runtime / 'image.sif').write_bytes(b'fake-sif')
         inference.save(runtime / 'runtime.json', {'id': 'vllm-backport-sm80-0.13.1', 'sif': 'image.sif', 'sif_size': 8, 'overlay': 'python-overlay'})
-        for model in ('glm53', 'deepseek41'):
+        for model in MODELS:
             path = self.base / site['checkpoints'][model]
             path.mkdir(parents=True)
             for name in ('config.json', 'tokenizer_config.json'):
                 (path / name).write_text('{}')
-            shards = ['shard-{}.safetensors'.format(i) for i in range(48 if model == 'deepseek41' else 2)]
+            profile = inference.load(RELEASE / 'profiles' / (model + '.json'))
+            shards = ['shard-{}.safetensors'.format(i) for i in range(profile.get('expected_shards', 2))]
             for name in shards:
                 (path / name).write_bytes(b'x')
             inference.save(path / 'model.safetensors.index.json', {'weight_map': {str(i): s for i, s in enumerate(shards)}})
@@ -69,13 +89,15 @@ class Framework(unittest.TestCase):
         return Path(output.decode().strip())
 
     def test_private_pinned_runs_and_runtime_reuse(self):
-        runs = [self.prepare(name) for name in ('glm53', 'deepseek41')]
+        runs = [self.prepare(name) for name in MODELS]
         configs = [inference.load(p / 'RUN_CONFIG.json') for p in runs]
         self.assertEqual(configs[0]['sif'], configs[1]['sif'])
         self.assertEqual(configs[0]['overlay'], configs[1]['overlay'])
         self.assertNotEqual(configs[0]['cache_path'], configs[1]['cache_path'])
         keys = [(p / '.runtime/api_key').read_text() for p in runs]
         self.assertNotEqual(keys[0], keys[1])
+        self.assertEqual(len(set(keys)), len(MODELS))
+        self.assertEqual(len({cfg['cache_path'] for cfg in configs}), len(MODELS))
         for run in runs:
             for path in (run, run / '.runtime', run / '.runtime/api_key'):
                 self.assertEqual(path.stat().st_mode & 0o077, 0)
@@ -111,7 +133,10 @@ class Framework(unittest.TestCase):
         self.assertNotEqual(second.returncode, 0)
 
     def test_model_settings_survive_refactor(self):
-        for model, tp, pp, parsers in [('glm53', '4', '2', ['glm45', 'glm47']), ('deepseek41', '8', '1', ['deepseek_v41'])]:
+        settings = [('glm53', '4', '2', ['glm45', 'glm47']), ('deepseek41', '8', '1', ['deepseek_v41'])]
+        if 'qwen235b' in MODELS:
+            settings.append(('qwen235b', '4', '2', ['qwen3', 'hermes']))
+        for model, tp, pp, parsers in settings:
             cfg = inference.load(self.prepare(model) / 'RUN_CONFIG.json')
             command = node.engine_command(cfg, 0, '10.0.0.1', 29500, 21001)
             self.assertEqual(command[command.index('--tensor-parallel-size') + 1], tp)
@@ -137,14 +162,14 @@ class Framework(unittest.TestCase):
     def test_batch_readiness_english_checks_and_term_cleanup(self):
         fixture = REPO / 'tests/fake_api.py'
         self.command('srun', '#!/bin/bash\nexec ' + shutil.which('python3') + ' ' + str(fixture) + '\n')
-        for model in ('glm53', 'deepseek41'):
+        for model in MODELS:
             with self.subTest(model=model):
                 run = self.prepare(model)
                 # Pick an unused API port in the launcher's deterministic range.
                 for job in range(12300, 12900):
                     probe = socket.socket()
                     try:
-                        probe.bind(('127.0.0.1', 21000 + job % 10000))
+                        probe.bind(('127.0.0.1', allocated_ports()[job % 10000][1]))
                         break
                     except OSError:
                         pass

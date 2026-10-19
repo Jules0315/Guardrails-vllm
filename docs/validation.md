@@ -52,3 +52,7 @@ The historical GPU jobs and their endpoints have ended. This repository contains
 ## Common framework follow-up
 
 The shared GLM/DeepSeek execution code has since passed real two-node GPU and English API tests. See the [common framework validation record](common-gpu-validation.md). This later evidence does not expand the historical Qwen/GLM adaptation scope above.
+
+## Qwen common-profile follow-up
+
+Qwen3-235B was added to the shared launcher and passed fresh English GPU/API tests on two nodes. The same release corrects API/master port collisions; see [Qwen validation](qwen-common-validation.md).

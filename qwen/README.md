@@ -1,3 +1,5 @@
+> Current team workflow: use the shared `qwen235b` profile in [QUICK_GUIDE.md](../releases/inference/2026-10-19-docs1/QUICK_GUIDE.md). It passed fresh multi-node English API validation; the staged scripts below remain historical installation/debugging procedures.
+
 # vLLM on Leonardo (Singularity + Slurm) - starter kit
 
 Each step answers one question before the next one adds complexity.

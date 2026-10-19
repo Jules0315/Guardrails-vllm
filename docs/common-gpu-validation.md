@@ -41,3 +41,7 @@ The result folders contain startup checks, both client suites, timing and checkp
 Both servers were explicitly cancelled after the API checks passed. Their private endpoints were removed, test keys were deleted and SSH forwards were cancelled. A Slurm `CANCELLED` state reflects this deliberate stop; it is not a natural successful batch exit. No validation server was left running.
 
 These runs validate one operator account and a short API observation window. They do not establish another teammate's inference access, sustained application load, production availability or unattended authentication. A new server run creates a fresh key and endpoint. DeepSeek's four client requests are queued against `max-num-seqs=2`; GLM uses four sequence slots. Both profiles limit context to 2048 tokens.
+
+## Later Qwen release
+
+The current three-model guide is [QUICK_GUIDE.md](../releases/inference/2026-10-19-docs1/QUICK_GUIDE.md). Qwen and the port-only correction were GPU-validated on 19 October; see [Qwen results](qwen-common-validation.md). The GLM/DeepSeek runs above remain their original 18 October evidence.

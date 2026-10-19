@@ -30,7 +30,7 @@ def main():
             for name, digest in json.loads(p.read_text())['files'].items():
                 file = p.parent / name
                 assert hashlib.sha256(file.read_bytes()).hexdigest() == digest, 'Hash mismatch: ' + str(file)
-        if p.name == 'GPU_VALIDATION.json':
+        if p.name.endswith('GPU_VALIDATION.json'):
             evidence = json.loads(p.read_text())
             tested = root / 'releases' / evidence['tested_release']
             assert hashlib.sha256((tested / 'RELEASE_MANIFEST.json').read_bytes()).hexdigest() == evidence['tested_manifest_sha256']
